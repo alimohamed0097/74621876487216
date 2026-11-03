@@ -27,7 +27,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: 'pip'
 
       - name: Install Python Dependencies & Playwright Chromium
         run: |
@@ -41,9 +40,8 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || '8208425337' }}
           APPOINTMENT_URL: 'https://appointment.bmeia.gv.at/'
         run: |
-          # فحص الدقائق الحالية لتحديد ما إذا كنا في أول دورة من الساعة (الدقائق 00 إلى 04)
-          # أو إذا تم التشغيل يدوياً عبر زر Run workflow لإرسال رسالة الاطمئنان الساعية
-          CURRENT_MIN=$(date +%M)
+          # استخدام 10# لتجنب خطأ الأرقام الثمانية (Octal) في Bash مثل الدقيقة 08 و 09
+          CURRENT_MIN=$((10#$(date +%M)))
           if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ] || [ "$CURRENT_MIN" -lt 5 ]; then
             export SEND_HOURLY_STATUS="true"
           else
