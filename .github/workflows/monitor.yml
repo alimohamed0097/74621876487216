@@ -5,11 +5,9 @@ name: Austria Embassy Appointment Monitor
 
 on:
   schedule:
-    # تشغيل الكود تلقائياً كل 5 دقائق على مدار الساعة (24/7)
     - cron: '*/5 * * * *'
-  workflow_dispatch: # يتيح لك تشغيل البوت يدوياً في أي وقت من تبويب Actions
+  workflow_dispatch:
 
-# منع تداخل أكثر من عملية فحص في نفس اللحظة
 concurrency:
   group: austria-embassy-monitor
   cancel-in-progress: false
@@ -40,7 +38,6 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || '8208425337' }}
           APPOINTMENT_URL: 'https://appointment.bmeia.gv.at/'
         run: |
-          # استخدام 10# لتجنب خطأ الأرقام الثمانية (Octal) في Bash مثل الدقيقة 08 و 09
           CURRENT_MIN=$((10#$(date +%M)))
           if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ] || [ "$CURRENT_MIN" -lt 5 ]; then
             export SEND_HOURLY_STATUS="true"
