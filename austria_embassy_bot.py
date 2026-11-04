@@ -27,7 +27,7 @@ SEND_HOURLY_STATUS = os.getenv("SEND_HOURLY_STATUS", "false").strip().lower() ==
 # إعدادات الاختيار المستهدفة حسب السيناريو المطلوب حرفياً
 TARGET_LANGUAGE_OPTIONS = ["en", "English", "Englisch"]
 TARGET_OFFICE = "KAIRO"
-TARGET_CALENDAR_CATEGORY = "Familienzusammenführung gem. NAG (nur für sonstige Staatsangehörige mit Wohnsitz)"
+TARGET_CALENDAR_CATEGORY = "Aufenthaltsbewilligung Student (nur Bachelor)"
 NO_APPOINTMENT_TEXT = "For your selection there are unfortunately no appointments available"
 URGENT_KEYWORD = "ميعاد_سفارة_عاجل"
 
