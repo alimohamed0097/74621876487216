@@ -1,6 +1,3 @@
-
-monitor.yml
-100%
 name: "austria_embassy_bot"
 on:
   schedule:
