@@ -35,4 +35,3 @@ jobs:
             export SEND_HOURLY_STATUS="false"
           fi
           python austria_embassy_bot.py
-Displaying monitor.yml.
