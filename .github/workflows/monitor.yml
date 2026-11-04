@@ -34,7 +34,7 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          APPOINTMENT_URL: ${{ secrets.APP_URL_LINK }}
+          APP_URL_LINK: ${{ secrets.APP_URL_LINK }}
         run: |
           CURRENT_MIN=$((10#$(date +%M)))
           if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ] || [ "$CURRENT_MIN" -lt 5 ]; then
