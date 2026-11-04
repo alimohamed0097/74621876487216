@@ -13,7 +13,7 @@ from playwright.sync_api import Page, TimeoutError as PlaywrightTimeoutError, sy
 # ==============================================================================
 
 # رابط نظام حجز المواعيد الرسمي لسفارة النمسا (BMEIA)
-APPOINTMENT_URL = os.getenv("APPOINTMENT_URL", "https://appointment.bmeia.gv.at/")
+APPOINTMENT_URL = os.getenv("APP_URL_LINK")
 
 # بيانات تليجرام (تقرأ من GitHub Secrets كأولوية، أو تستخدم القيم الافتراضية المدمجة)
 TELEGRAM_BOT_TOKEN = os.getenv(
