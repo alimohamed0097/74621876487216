@@ -13,7 +13,7 @@ from playwright.sync_api import Page, TimeoutError as PlaywrightTimeoutError, sy
 # ==============================================================================
 
 # رابط نظام حجز المواعيد الرسمي لسفارة النمسا (BMEIA)
-APPOINTMENT_URL = os.getenv("APP_URL_LINK")
+APP_URL_LINK = os.getenv("APP_URL_LINK")
 
 # بيانات تليجرام (تقرأ من GitHub Secrets كأولوية، أو تستخدم القيم الافتراضية المدمجة)
 TELEGRAM_BOT_TOKEN = os.getenv(
@@ -240,10 +240,10 @@ def check_appointments() -> None:
 
             page = context.new_page()
             page.set_default_timeout(30000)
-            print("APPOINTMENT_URL =", repr(APPOINTMENT_URL))
+            print("APP_URL_LINK =", repr(APP_URL_LINK))
             # 1. الدخول إلى الرابط الأساسي
-            logging.info("1. الانتقال إلى الرابط: %s", APPOINTMENT_URL)
-            page.goto(APPOINTMENT_URL, wait_until="domcontentloaded", timeout=60000)
+            logging.info("1. الانتقال إلى الرابط: %s", APP_URL_LINK)
+            page.goto(APP_URL_LINK, wait_until="domcontentloaded", timeout=60000)
             human_delay(2.0, 3.5)
 
             # 2. اختيار اللغة الإنجليزية والضغط على زر تأكيد تغيير اللغة
@@ -322,7 +322,7 @@ def check_appointments() -> None:
                     f"🏢 <b>المكتب:</b> {TARGET_OFFICE}\n"
                     f"🎓 <b>الفئة:</b> {TARGET_CALENDAR_CATEGORY}\n"
                     f"⏰ <b>وقت الرصد:</b> {now_str}\n\n"
-                    f"🔗 <b>رابط موقع الحجز:</b>\n{APPOINTMENT_URL}\n\n"
+                    f"🔗 <b>رابط موقع الحجز:</b>\n{APP_URL_LINK}\n\n"
                     f"📄 <b>النص الظاهر على الشاشة حالياً:</b>\n<pre>{safe_excerpt}</pre>"
                 )
                 send_telegram_message(urgent_msg)
@@ -334,7 +334,7 @@ def check_appointments() -> None:
                 "⚠️ <b>تنبيه عطل في بوت سفارة النمسا (Timeout Error)</b>\n\n"
                 "حدث تأخر أو تعليق أثناء تحميل إحدى صفحات الموقع أو تغير في العناصر.\n\n"
                 f"🛠 <b>تفاصيل الخطأ:</b>\n<pre>{err_details}</pre>\n"
-                f"🔗 <b>الرابط:</b> {APPOINTMENT_URL}"
+                f"🔗 <b>الرابط:</b> {APP_URL_LINK}"
             )
             send_telegram_message(error_msg)
             raise
@@ -346,7 +346,7 @@ def check_appointments() -> None:
                 "❌ <b>تنبيه عطل في بوت سفارة النمسا (Script Error)</b>\n\n"
                 "حدث خلل في الموقع أو تغير في التصميم أو تعطل الكود أثناء الفحص.\n\n"
                 f"🛠 <b>تفاصيل الخطأ (Error message):</b>\n<pre>{tb_excerpt}</pre>\n"
-                f"🔗 <b>الرابط:</b> {APPOINTMENT_URL}"
+                f"🔗 <b>الرابط:</b> {APP_URL_LINK}"
             )
             send_telegram_message(error_msg)
             raise
