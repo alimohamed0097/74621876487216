@@ -17,9 +17,9 @@ APPOINTMENT_URL = os.getenv("APPOINTMENT_URL", "https://appointment.bmeia.gv.at/
 
 # بيانات تليجرام (تقرأ من GitHub Secrets كأولوية، أو تستخدم القيم الافتراضية المدمجة)
 TELEGRAM_BOT_TOKEN = os.getenv(
-    "TELEGRAM_BOT_TOKEN", "8939212306:AAH9zZh4fdJr6w3bJyhM1IYlMisMVKzisLQ"
+    "TELEGRAM_BOT_TOKEN"
 )
-TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "8208425337")
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 
 # هل هذه الدورة هي دورة التقرير الساعي (كل ساعة)؟
 SEND_HOURLY_STATUS = os.getenv("SEND_HOURLY_STATUS", "false").strip().lower() == "true"
