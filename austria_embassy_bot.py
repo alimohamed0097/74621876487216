@@ -240,7 +240,7 @@ def check_appointments() -> None:
 
             page = context.new_page()
             page.set_default_timeout(30000)
-
+            print("APPOINTMENT_URL =", repr(APPOINTMENT_URL))
             # 1. الدخول إلى الرابط الأساسي
             logging.info("1. الانتقال إلى الرابط: %s", APPOINTMENT_URL)
             page.goto(APPOINTMENT_URL, wait_until="domcontentloaded", timeout=60000)
